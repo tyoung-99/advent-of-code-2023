@@ -1,5 +1,6 @@
 # Day 3
 
+
 def part_1():
     def is_adjacent(num, symbol):
         if num["added"]:
@@ -24,24 +25,39 @@ def part_1():
                 building_num += char
             else:
                 if building_num != "":
-                    nums[y].append({"val": int(building_num), "x": x - len(building_num), "y": y, "added": False})
+                    nums[y].append(
+                        {
+                            "val": int(building_num),
+                            "x": x - len(building_num),
+                            "y": y,
+                            "added": False,
+                        }
+                    )
                     building_num = ""
                 if char != ".":
                     symbols[y].append({"symbol": char, "x": x, "y": y})
 
         if building_num != "":
-            nums[y].append({"val": int(building_num), "x": len(line) - len(building_num), "y": y, "added": False})
+            nums[y].append(
+                {
+                    "val": int(building_num),
+                    "x": len(line) - len(building_num),
+                    "y": y,
+                    "added": False,
+                }
+            )
 
     for y, line in enumerate(symbols):
         if line:
             for symbol in line:
-                for new_y in range(y-1, y+2):
+                for new_y in range(y - 1, y + 2):
                     for num in nums[new_y]:
                         if is_adjacent(num, symbol):
                             part_nums.append(num["val"])
 
     # print(part_nums)
     print(f"Sum of all part numbers: {sum(part_nums)}")
+
 
 def part_2():
     def is_adjacent(num, symbol):
@@ -64,19 +80,23 @@ def part_2():
                 building_num += char
             else:
                 if building_num != "":
-                    nums[y].append({"val": int(building_num), "x": x - len(building_num), "y": y})
+                    nums[y].append(
+                        {"val": int(building_num), "x": x - len(building_num), "y": y}
+                    )
                     building_num = ""
                 if char != ".":
                     symbols[y].append({"symbol": char, "x": x, "y": y})
 
         if building_num != "":
-            nums[y].append({"val": int(building_num), "x": len(line) - len(building_num), "y": y})
+            nums[y].append(
+                {"val": int(building_num), "x": len(line) - len(building_num), "y": y}
+            )
 
     for y, line in enumerate(symbols):
         if line:
             for symbol in line:
                 adjacents = []
-                for new_y in range(y-1, y+2):
+                for new_y in range(y - 1, y + 2):
                     for num in nums[new_y]:
                         if is_adjacent(num, symbol):
                             adjacents.append(num["val"])
@@ -85,5 +105,6 @@ def part_2():
 
     # print(gear_ratios)
     print(f"Sum of all gear ratios: {sum(gear_ratios)}")
+
 
 part_2()
