@@ -1,7 +1,3 @@
-# Ignore input files but not requirements
-*.txt
-!requirements.txt
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
